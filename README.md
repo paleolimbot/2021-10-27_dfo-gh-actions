@@ -7,11 +7,25 @@ GitHub Actions is a way to run code on somebody else's computer. You can run cod
 - Render a website: [action](https://github.com/ArgoCanada/blog/blob/master/.github/workflows/render-distill.yaml), [output](https://github.com/ArgoCanada/blog/runs/3976496975?check_suite_focus=true#step:6:1)
 - Run a script on a scheduled basis: [action](https://github.com/paleolimbot/bsrto/blob/master/.github/workflows/build-stable.yaml#L8-L9)
 
-GitHub Actions are YAML files that live in the ".github/workflows" directory of a GitHub repository. To practice, [make a fork of this repository](https://github.com/paleolimbot/2021-10-27_dfo-gh-actions/fork) and then open up the ".github/workflows/hello-world-action.yml" file. The file looks like this:
+GitHub Actions are YAML files that live in the ".github/workflows" directory of a GitHub repository. To practice, [make a fork of this repository](https://github.com/paleolimbot/2021-10-27_dfo-gh-actions/fork) and then open up the ".github/workflows/hello-world-action.yaml" file. The file looks like this:
 
 ```yaml
 
 ```
+
+I'll describe the steps from the bottom up.
+
+- The action produces a pdf document (demo.pdf) from an RMarkdown file (demo.Rmd). This pdf output is made availabe by the "upload artifact" step as a clickable link in the build log.
+- The document is rendered using `rmarkdown::render()`.
+- Before the document is rendered, the actions needs to install R, install the ability to produce PDF output, and install R packages it needs.
+
+## Your turn 1
+
+Since you've just forked the repository, the action hasn't run for you yet. Update the author name in the document from "Dewey Dunnington" to your own name. You can do this by clicking the "edit" link at the top (no need to clone into your local computer if you don't want to!).
+
+Click "commit changes" at the bottom and wait for your action to complete.
+
+When the action has completed, open the "demo.pdf" artifact to view your results!
 
 ## Resources
 
